@@ -100,6 +100,8 @@ p {
 .header.fixed {
     background-color: #1A1A1A;
     padding: 10px 0;
+    border-bottom: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
 }
 
@@ -107,6 +109,10 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+}
+
+.header__logo.head {
+    cursor: pointer;
 }
 
 /* NAV */
@@ -1173,6 +1179,16 @@ p {
 
     .nav {
         display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        flex-direction: column;
+        background-color: rgba(26, 26, 26, 0.9);
+    }
+
+    .nav.open {
+        display: flex;
         width: 100%;
         position: absolute;
         top: 100%;
