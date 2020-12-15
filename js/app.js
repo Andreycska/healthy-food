@@ -62,3 +62,44 @@ document.querySelectorAll('[data-scroll]').forEach(link => {
         });
     });
 });
+
+new Swiper('.about', {
+
+    // Кнопки навигации
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    // Прокрутка мышью
+
+    mousewheel: {
+        sensitivity: 1,
+        eventsTarget: ".about",
+    },
+
+    // Сколько слайдов показывать
+
+    slidesPerView: 1,
+
+    // Растояние между слайдами
+
+    spaceBetween: 30,
+
+    // Бесконечная прокрутка
+
+    // loop: true,
+
+    // Адаптивность
+
+    breakpoints: {
+        // 320 : {
+        //     slidesPerView: 1,
+        // },
+        577 : {
+            slidesPerView: 2,
+        }
+    },
+
+});
