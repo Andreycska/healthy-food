@@ -1,4 +1,6 @@
 window.onscroll = function() {
+    let headerNav = document.getElementById("nav");
+    let links = headerNav.getElementsByClassName("nav__link");
     let header = document.getElementById("header");
     let about = document.getElementById("about");
     let sticky = about.offsetTop;
@@ -7,6 +9,9 @@ window.onscroll = function() {
         header.classList.add("fixed");
       } else {
         header.classList.remove("fixed");
+        for (let i = 0; i < links.length; i++) {
+            links[i].classList.remove("active");
+        }
       }
 };
 
@@ -19,12 +24,12 @@ burger.addEventListener("click", function() {
     element.classList.toggle("open");
 });
 
-document.querySelectorAll('a[href^="#"').forEach(link => {
+document.querySelectorAll('[data-menu]').forEach(link => {
 
     link.addEventListener('click', function(e) {
         e.preventDefault();
 
-        let href = this.getAttribute('href').substring(1);
+        let href = this.getAttribute('data-menu').substring(1);
 
         const scrollTarget = document.getElementById(href);
 
@@ -42,19 +47,31 @@ document.querySelectorAll('a[href^="#"').forEach(link => {
     });
 });
 
+let headerNav = document.getElementById("nav");
+let links = headerNav.getElementsByClassName("nav__link");
+
+for (let i = 0; i < links.length; i++) {
+  links[i].addEventListener("click", function() {
+    let current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
 document.querySelectorAll('[data-scroll]').forEach(link => {
 
     link.addEventListener('click', function(e) {
         e.preventDefault();
 
         let href = this.getAttribute('data-scroll').substring(1);
+        let headerNav = document.getElementById("nav");
+        let linkNav = headerNav.getElementsByClassName("nav__link");
 
         const scrollTarget = document.getElementById(href);
 
         const topOffset = document.querySelector('.nav').offsetHeight;
         const elementPosition = scrollTarget.getBoundingClientRect().top;
         const offsetPosition = elementPosition - topOffset;
-
 
         window.scrollBy({
             top: offsetPosition,
